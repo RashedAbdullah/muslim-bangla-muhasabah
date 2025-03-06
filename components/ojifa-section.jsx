@@ -2,7 +2,7 @@ import React from "react";
 
 const OjifaSection = () => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md space-y-4">
+    <div className="bg-white p-6 rounded-xl shadow-md space-y-4">
       <h3 className="text-xl font-bold text-gray-800">অজিফা সেকশন</h3>
       <div className="space-y-4">
         <div className="flex justify-between items-center pb-2">

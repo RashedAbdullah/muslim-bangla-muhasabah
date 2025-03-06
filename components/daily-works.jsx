@@ -5,52 +5,96 @@ import { Amiri } from "next/font/google";
 
 const amiri = Amiri({ weight: "400", subsets: ["arabic"] });
 
-const fetchVerse = async () => {
+// ✅ লোকাল স্টোরেজ ব্যবস্থাপনা ফাংশন
+const saveToLocalStorage = (key, value) => {
+  localStorage.setItem(
+    key,
+    JSON.stringify({ content: value, date: new Date().toDateString() })
+  );
+};
+
+const getFromLocalStorage = (key) => {
+  const data = JSON.parse(localStorage.getItem(key));
+  return data?.date === new Date().toDateString() ? data.content : null;
+};
+
+// ✅ অ্যাসিনক্রোনাস ডাটা ফেচ ফাংশন
+const fetchData = async (key, url, path) => {
   try {
-    const response = await fetch("https://api.muslimbangla.com/verse/random/");
+    const response = await fetch(url);
     const data = await response.json();
-    console.log(data?.data?.verses?.modified_content);
-    if (data?.data?.verses?.modified_content) {
-      const newVerse = {
-        content: data?.data?.verses?.modified_content,
-        date: new Date().toDateString(),
-      };
-      localStorage.setItem("dailyVerse", JSON.stringify(newVerse));
-      return newVerse.content;
-    }
+    const content =
+      path.reduce((obj, key) => obj?.[key], data) || "ডাটা লোড করা যাচ্ছে না!";
+    saveToLocalStorage(key, content);
+    return content;
   } catch (error) {
-    console.error("Error fetching verse:", error);
-    return "আয়াত লোড করা যাচ্ছে না!";
+    console.error(`Error fetching ${key}:`, error);
+    return "ডাটা লোড করা যাচ্ছে না!";
   }
 };
 
-const getVerse = async (setVerse) => {
-  const storedVerse = JSON.parse(localStorage.getItem("dailyVerse"));
-  const today = new Date().toDateString();
+// ✅ সমস্ত ডাটা সংগ্রহ
+const getDailyData = async (setters) => {
+  const [setVerse, setHadith, setDua, setMasail] = setters;
 
-  if (!storedVerse || storedVerse.date !== today) {
-    const newVerse = await fetchVerse();
-    setVerse(newVerse);
-  } else {
-    setVerse(storedVerse.content);
-  }
+  const verse =
+    getFromLocalStorage("dailyVerse") ||
+    (await fetchData(
+      "dailyVerse",
+      "https://api.muslimbangla.com/verse/random/",
+      ["data", "verses", "modified_content"]
+    ));
+
+  const hadith =
+    getFromLocalStorage("dailyHadith") ||
+    (await fetchData(
+      "dailyHadith",
+      "https://api.topofstacksoftware.com/hadith/api/v2/hadith/random",
+      ["data", 0, "description"]
+    ));
+
+  const dua =
+    getFromLocalStorage("dailyDua") ||
+    (await fetchData("dailyDua", "https://api.muslimbangla.com/dua/random", [
+      "data",
+      0,
+      "dua",
+    ]));
+
+  const masail =
+    getFromLocalStorage("dailyMasail") ||
+    (await fetchData(
+      "dailyMasail",
+      "https://api.topofstacksoftware.com/quran-hadith/api/v2/single-question",
+      ["data", "answer"]
+    ));
+
+  setVerse(verse);
+  setHadith(hadith);
+  setDua(dua);
+  setMasail(masail);
 };
 
+// ✅ মূল কম্পোনেন্ট
 const DailyWorks = () => {
   const [selectedSection, setSelectedSection] = useState(null);
   const [verse, setVerse] = useState("লোড হচ্ছে...");
+  const [hadith, setHadith] = useState("লোড হচ্ছে...");
+  const [dua, setDua] = useState("লোড হচ্ছে...");
+  const [masail, setMasail] = useState("লোড হচ্ছে...");
 
   useEffect(() => {
-    getVerse(setVerse);
+    getDailyData([setVerse, setHadith, setDua, setMasail]);
 
-    // ১২ টার সময় আপডেট করার জন্য টাইমার
     const now = new Date();
-    const midnight = new Date();
+    const midnight = new Date(now);
     midnight.setHours(24, 0, 0, 0);
     const timeUntilMidnight = midnight - now;
 
-    const timer = setTimeout(() => getVerse(setVerse), timeUntilMidnight);
-
+    const timer = setTimeout(
+      () => getDailyData([setVerse, setHadith, setDua, setMasail]),
+      timeUntilMidnight
+    );
     return () => clearTimeout(timer);
   }, []);
 
@@ -67,18 +111,14 @@ const DailyWorks = () => {
     {
       text: "আজকের হাদিস",
       icon: <LiaQuranSolid className="text-2xl mx-auto" />,
-      content: (
-        <p dir="rtl" className={`text-xl ${amiri.className}`}>
-          الحديث الشريف
-        </p>
-      ),
+      content: <p className="text-xl">{hadith}</p>,
     },
     {
       text: "আজকের দু’আ",
       icon: <FaPray className="text-2xl mx-auto" />,
       content: (
         <p dir="rtl" className={`text-xl ${amiri.className}`}>
-          دعاء هذا اليوم
+          {dua}
         </p>
       ),
     },
@@ -86,21 +126,18 @@ const DailyWorks = () => {
       text: "আজকের মাসায়েল",
       icon: <div className="text-2xl mx-auto">📜</div>,
       content: (
-        <p dir="rtl" className={`text-xl ${amiri.className}`}>
-          مسائل هذا اليوم
-        </p>
+        <p className="text-xl leading-7 whitespace-pre-line">{masail}</p>
       ),
     },
   ];
 
   return (
     <div className="space-y-4">
-      {/* Section Selection */}
       <div className="grid grid-cols-2 gap-4 text-center">
         {works.map((work, index) => (
           <div
             key={index}
-            className={`p-4 rounded-lg shadow cursor-pointer ${
+            className={`p-4 rounded-xl shadow cursor-pointer ${
               selectedSection === index && "bg-green-500 text-white"
             }`}
             onClick={() => setSelectedSection(index)}
@@ -110,10 +147,8 @@ const DailyWorks = () => {
           </div>
         ))}
       </div>
-
-      {/* Display selected section content */}
       {selectedSection !== null && (
-        <div className="bg-gray-800 text-white px-2 rounded-lg mt-6">
+        <div className="bg-gray-800 text-white px-2 rounded-xl mt-6 max-h-60 overflow-y-auto scrollbar">
           <div className="py-3 border-b text-xl">
             <h3>{works[selectedSection].text}</h3>
           </div>

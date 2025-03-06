@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import { IoCalendarOutline } from "react-icons/io5";
+import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { getEngToBn } from "@/utils/en-to-bn";
 
 const CalendarSection = () => {
   const today = new Date();
   const currentMonth = today.getMonth();
   const currentYear = today.getFullYear();
+  const currentDay = today.getDate();
 
-  // State to track selected date, month, year
   const [selectedDate, setSelectedDate] = useState(today.getDate());
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
   const [selectedYear, setSelectedYear] = useState(currentYear);
 
-  // Function to get the name of the day in Bangla
   const getDayName = (date) => {
     const dayNames = [
       "রবিবার",
@@ -27,60 +26,51 @@ const CalendarSection = () => {
     return dayNames[dayIndex];
   };
 
-  // Function to get number of days in the selected month
   const getDaysInMonth = () => {
     return new Date(selectedYear, selectedMonth + 1, 0).getDate();
   };
 
-  // Function to change the month
   const changeMonth = (increment) => {
     const newMonth = selectedMonth + increment;
-    if (newMonth > 11) {
-      setSelectedMonth(0);
-      setSelectedYear(selectedYear + 1); // Increment year when month exceeds December
-    } else if (newMonth < 0) {
+    // Disable future months
+    if (newMonth > currentMonth && selectedYear === currentYear) return;
+    if (newMonth < 0) {
       setSelectedMonth(11);
-      setSelectedYear(selectedYear - 1); // Decrement year when month goes below January
+      setSelectedYear(selectedYear - 1);
+    } else if (newMonth > 11) {
+      setSelectedMonth(0);
+      setSelectedYear(selectedYear + 1);
     } else {
       setSelectedMonth(newMonth);
     }
-  };
-
-  // Function to change the year
-  const changeYear = (increment) => {
-    setSelectedYear(selectedYear + increment);
   };
 
   const options = { year: "numeric", month: "long" };
 
   return (
     <div className="space-y-5">
-      <div className="text-2xl text-green-600 font-bold flex justify-between items-center">
-        <div className="flex justify-between items-center w-full">
-          {/* Show current month and year with navigation buttons */}
-          <button
-            onClick={() => changeMonth(-1)}
-            className="mr-4 p-3 bg-green-600 text-white rounded-full shadow-md hover:bg-green-700 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none"
-          >
-            {"<"}
-          </button>
-          <h3 className="text-xl font-medium text-gray-800">
-            {new Date(selectedYear, selectedMonth).toLocaleDateString(
-              "bn",
-              options
-            )}
-          </h3>
-          <button
-            onClick={() => changeMonth(1)}
-            className="ml-4 p-3 bg-green-600 text-white rounded-full shadow-md hover:bg-green-700 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none"
-          >
-            {">"}
-          </button>
-        </div>
+      {/* মাস ও বছর নির্বাচন */}
+      <div className="flex items-center justify-center gap-4">
+        <button
+          onClick={() => changeMonth(-1)}
+          className="p-3 rounded-full bg-green-500 text-white shadow-md hover:bg-green-700 transition-all duration-300 transform hover:scale-110 focus:ring focus:ring-green-300"
+        >
+          <IoChevronBack size={24} />
+        </button>
 
-        {/* <div>
-          <IoCalendarOutline />
-        </div> */}
+        <h3 className="text-lg font-semibold text-gray-900 bg-gray-200 px-6 py-3 rounded-lg shadow-md">
+          {new Date(selectedYear, selectedMonth, selectedDate).toLocaleDateString("bn", {
+            ...options,
+            day: "numeric",
+          })}
+        </h3>
+
+        <button
+          onClick={() => changeMonth(1)}
+          className="p-3 rounded-full bg-green-500 text-white shadow-md hover:bg-green-700 transition-all duration-300 transform hover:scale-110 focus:ring focus:ring-green-300"
+        >
+          <IoChevronForward size={24} />
+        </button>
       </div>
 
       {/* ক্যালেন্ডার */}
@@ -88,18 +78,28 @@ const CalendarSection = () => {
         <div className="flex gap-2 text-center text-lg w-max">
           {[...Array(getDaysInMonth())].map((_, i) => {
             const date = i + 1;
+            // Disable future dates
+            const isDisabled =
+              selectedYear === currentYear &&
+              selectedMonth === currentMonth &&
+              date > currentDay;
+
             return (
               <div
                 key={date}
-                onClick={() => setSelectedDate(date)}
-                className={`px-4 py-2 rounded-full cursor-pointer transition ${
+                onClick={() => !isDisabled && setSelectedDate(date)}
+                className={`px-5 py-3 rounded-lg cursor-pointer transition-all duration-300 text-center shadow-md ${
                   selectedDate === date
-                    ? "bg-green-600 text-white space-x-2"
-                    : "bg-gray-100"
+                    ? "bg-green-600 text-white font-bold transform scale-110"
+                    : isDisabled
+                    ? "bg-gray-100 cursor-not-allowed"
+                    : "bg-gray-100 hover:bg-gray-200"
                 }`}
               >
-                <span>{selectedDate === date && getDayName(selectedDate)}</span>
-                <span> {getEngToBn(date)}</span>
+                <span className="block text-sm text-white">
+                  {selectedDate === date && getDayName(selectedDate)}
+                </span>
+                <span className="text-lg">{getEngToBn(date)}</span>
               </div>
             );
           })}

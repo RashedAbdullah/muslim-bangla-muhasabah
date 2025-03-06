@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "Kalpurush";
+  src: url("/kalpurush.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Kalpurush", sans-serif;
+}
+
+
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
