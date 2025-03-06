@@ -1,4 +1,3 @@
-import { getEngToBn } from "@/utils/en-to-bn";
 import React from "react";
 import QuranTableSection from "./table/quran-table";
 import Siyamtable from "./table/siyam-table";
@@ -11,7 +10,7 @@ import DawahTable from "./table/dawah-table";
 
 const MuhasabahTable = () => {
   return (
-    <div className="max-w-5xl mx-auto p-8 bg-white shadow-lg rounded-lg mt-10 border border-gray-200">
+    <div className="p-2 bg-white shadow-lg rounded-lg mt-10 border border-gray-200">
       <div className="mb-6">
         <h1 className="text-center text-3xl font-extrabold text-gray-800 mb-4">
           মাসিক মুহাসাবা রিপোর্ট
