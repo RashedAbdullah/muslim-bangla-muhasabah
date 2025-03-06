@@ -5,7 +5,7 @@ const DawahSection = () => {
     <div className="bg-white p-6 rounded-xl shadow-md space-y-4">
       <h3 className="text-xl font-bold text-gray-800">দাওয়াহ সেকশন</h3>
       <div className="space-y-4">
-        <div className="flex justify-between items-center pb-2">
+        <div className="flex justify-between items-center ">
           <p className="text-lg text-gray-700">আজকে দাওয়াত দিয়েছেন?</p>
           <input
             type="checkbox"
@@ -14,7 +14,7 @@ const DawahSection = () => {
         </div>
 
         {/* কতজনকে দিয়েছেন? */}
-        <div className="flex justify-between items-center pb-2">
+        <div className="flex justify-between items-center ">
           <p className="text-lg text-gray-700">কতজনকে দিয়েছেন?</p>
           <input
             type="number"
@@ -24,7 +24,7 @@ const DawahSection = () => {
         </div>
 
         {/* নোট */}
-        <div className="pb-2">
+        <div className="">
           <textarea
             className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-600"
             placeholder="নোট লিখুন..."

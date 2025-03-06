@@ -26,7 +26,7 @@ const SiyamSection = () => {
     <div className="bg-white p-6 rounded-xl shadow-md space-y-4">
       <h3 className="text-xl font-bold text-gray-800">রোযা সেকশন</h3>
       <div className="space-y-4">
-        <div className="flex justify-between items-center pb-2">
+        <div className="flex justify-between items-center">
           <p className="text-lg text-gray-700">আজকে রোযা রেখেছেন?</p>
           <input
             type="checkbox"
@@ -36,30 +36,30 @@ const SiyamSection = () => {
         </div>
 
         {/* প্রগ্রেসবার */}
-        <div className="flex justify-between items-center pb-2 gap-2">
+        <div className="flex justify-between items-center gap-2">
           <Progress value={progress} className="w-full" />
           <div>
             <p>{fastingDays}/30</p>
           </div>
         </div>
 
-        <div className="flex justify-between items-center">
+        {/* <div className="flex justify-between items-center">
           <p className="text-gray-700">আইয়্যামুল বীযের রোযা</p>
           <input
             type="checkbox"
             className="rounded-md border-gray-300 focus:ring-2 focus:ring-green-600"
             onChange={handleFastingCheck}
           />
-        </div>
+        </div> */}
 
-        <div className="flex justify-between items-center pb-2">
+        {/* <div className="flex justify-between items-center">
           <p className="text-gray-700">সোমবার ও বৃহস্পতিবারের রোযা</p>
           <input
             type="checkbox"
             className="rounded-md border-gray-300 focus:ring-2 focus:ring-green-600"
             onChange={handleFastingCheck}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -43,34 +43,34 @@ const SalahSection = () => {
         ))}
       </div>
 
-      <div className="flex justify-between items-center">
+      {/* <div className="flex justify-between items-center">
           <p className="text-gray-700">ইশরাকের নামাজ</p>
           <input
             type="checkbox"
             className="rounded-md border-gray-300 focus:ring-2 focus:ring-green-600"
             // onChange={handleFastingCheck}
           />
-        </div>
+        </div> */}
 
-        <div className="flex justify-between items-center">
+      {/* <div className="flex justify-between items-center">
           <p className="text-gray-700">চাশতের নামাজ</p>
           <input
             type="checkbox"
             className="rounded-md border-gray-300 focus:ring-2 focus:ring-green-600"
             // onChange={handleFastingCheck}
           />
-        </div>
+        </div> */}
 
-        <div className="flex justify-between items-center">
+      {/* <div className="flex justify-between items-center">
           <p className="text-gray-700">তাহাজ্জুদের নামাজ</p>
           <input
             type="checkbox"
             className="rounded-md border-gray-300 focus:ring-2 focus:ring-green-600"
             // onChange={handleFastingCheck}
           />
-        </div>
+        </div> */}
 
-      {showQuestions && (
+      {/* {showQuestions && (
         <div className="py-2 mt-4 bg-gray-100 p-4 rounded-xl">
           <div className="flex justify-between items-center">
             <p className="text-gray-700">জামাতের সাথে আদায় করেছন? (পুরুষ)</p>
@@ -132,7 +132,7 @@ const SalahSection = () => {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

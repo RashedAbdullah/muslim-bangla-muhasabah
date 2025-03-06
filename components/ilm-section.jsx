@@ -5,7 +5,7 @@ const IlmSection = () => {
     <div className="bg-white p-6 rounded-xl shadow-md space-y-4">
       <h3 className="text-xl font-bold text-gray-800">ইলম সেকশন</h3>
       <div className="space-y-4">
-        <div className="flex justify-between items-center pb-2">
+        <div className="flex justify-between items-center">
           <p className="text-lg text-gray-700">আজকে ইলম শিখেছেন?</p>
           <input
             type="checkbox"
@@ -22,7 +22,7 @@ const IlmSection = () => {
           />
         </div>
 
-        <div className="flex justify-between items-center pb-2">
+        <div className="flex justify-between items-center">
           <p className="text-lg text-gray-700">সাপ্তাহিক ইলমী মজলিশে বসেছেন?</p>
           <input
             type="checkbox"

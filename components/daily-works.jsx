@@ -103,7 +103,7 @@ const DailyWorks = () => {
       text: "আজকের আয়াত",
       icon: <FaQuran className="text-2xl mx-auto" />,
       content: (
-        <p dir="rtl" className={`text-xl ${amiri.className} leading-10`}>
+        <p dir="rtl" className={`text-md ${amiri.className} leading-10`}>
           {verse}
         </p>
       ),
@@ -111,22 +111,22 @@ const DailyWorks = () => {
     {
       text: "আজকের হাদিস",
       icon: <LiaQuranSolid className="text-2xl mx-auto" />,
-      content: <p className="text-xl">{hadith}</p>,
+      content: <p className="text-md">{hadith}</p>,
     },
     {
       text: "আজকের দু’আ",
       icon: <FaPray className="text-2xl mx-auto" />,
       content: (
-        <p dir="rtl" className={`text-xl ${amiri.className}`}>
+        <p dir="rtl" className={`text-md ${amiri.className}`}>
           {dua}
         </p>
       ),
     },
     {
       text: "আজকের মাসায়েল",
-      icon: <div className="text-2xl mx-auto">📜</div>,
+      icon: <div className="text-xl mx-auto">📜</div>,
       content: (
-        <p className="text-xl leading-7 whitespace-pre-line">{masail}</p>
+        <p className="text-md leading-7 whitespace-pre-line">{masail}</p>
       ),
     },
   ];
@@ -148,7 +148,7 @@ const DailyWorks = () => {
         ))}
       </div>
       {selectedSection !== null && (
-        <div className="bg-gray-800 text-white px-2 rounded-xl mt-6 max-h-60 overflow-y-auto scrollbar">
+        <div className="bg-green-600 text-white px-2 rounded-xl mt-6 max-h-60 overflow-y-auto scrollbar">
           <div className="py-3 border-b text-xl">
             <h3>{works[selectedSection].text}</h3>
           </div>

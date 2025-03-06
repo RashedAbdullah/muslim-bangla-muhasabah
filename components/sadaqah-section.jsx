@@ -5,7 +5,7 @@ const SadaqahSection = () => {
     <div className="bg-white p-6 rounded-xl shadow-md space-y-4">
       <h3 className="text-xl font-bold text-gray-800">দৈনিক সাদাকাহ</h3>
       <div className="space-y-4">
-        <div className="flex justify-between items-center pb-2">
+        <div className="flex justify-between items-center">
           <p className="text-lg text-gray-700">আজকে সাদাকাহ আদায় করেছেন?</p>
           <input
             type="checkbox"

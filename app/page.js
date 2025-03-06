@@ -8,6 +8,8 @@ import SiyamSection from "@/components/siyam-section";
 import OjifaSection from "@/components/ojifa-section";
 import SadaqahSection from "@/components/sadaqah-section";
 import CalendarSection from "@/components/calendar-section";
+import MuamalahSection from "@/components/muamalah-section";
+import MuhasabahTable from "@/components/muhasabah-table";
 
 const HomePage = () => {
   return (
@@ -33,8 +35,14 @@ const HomePage = () => {
       {/* দাওয়াহ সেকশন */}
       <DawahSection />
 
+      {/* মুআমালাহ সেকশন */}
+      <MuamalahSection />
+
       {/* সাদাকাহ সেকশন */}
       <SadaqahSection />
+
+      {/* মুহাসাবাহ টেবিল সেকশন */}
+      <MuhasabahTable />
     </div>
   );
 };
