@@ -22,7 +22,7 @@ const QuranTableSection = () => {
           <tr className="bg-gray-200">
             <th className="border px-4 py-2">কুরআন</th>
             {daysOfOneMonth.map((ind) => (
-              <th key={ind} className="border px-2 py-1">
+              <th key={ind} className="border px-2 py-1 text-sm">
                 {getEngToBn(ind)}
               </th>
             ))}
@@ -35,7 +35,7 @@ const QuranTableSection = () => {
               {daysOfOneMonth.map((day, index) => (
                 <td
                   key={index}
-                  className="border px-2 py-1 cursor-pointer hover:bg-gray-100"
+                  className="border px-2 py-1 cursor-pointer hover:bg-gray-100 text-sm"
                   onClick={() => toggleQuranProgress(index)}
                 >
                   {quranProgress[index] ? "✅" : "❌"}

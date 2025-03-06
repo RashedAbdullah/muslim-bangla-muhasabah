@@ -42,7 +42,7 @@ const HomePage = () => {
       <SadaqahSection />
 
       {/* মুহাসাবাহ টেবিল সেকশন */}
-      <MuhasabahTable />
+      {/* <MuhasabahTable /> */}
     </div>
   );
 };

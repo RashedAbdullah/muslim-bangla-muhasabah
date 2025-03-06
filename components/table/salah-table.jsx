@@ -43,7 +43,7 @@ const SalahTable = () => {
                   {daysOfOneMonth.map((_, dayIndex) => (
                     <td
                       key={dayIndex}
-                      className="border px-2 py-2 cursor-pointer"
+                      className="border px-2 py-2 cursor-pointer text-sm"
                       onClick={() => toggleCheck(salahIndex, dayIndex)}
                     >
                       {salahData[salahIndex][dayIndex] ? "✅" : "❌"}
