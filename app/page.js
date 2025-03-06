@@ -9,7 +9,6 @@ import OjifaSection from "@/components/ojifa-section";
 import SadaqahSection from "@/components/sadaqah-section";
 import CalendarSection from "@/components/calendar-section";
 import MuamalahSection from "@/components/muamalah-section";
-import MuhasabahTable from "@/components/muhasabah-table";
 
 const HomePage = () => {
   return (
@@ -40,9 +39,6 @@ const HomePage = () => {
 
       {/* সাদাকাহ সেকশন */}
       <SadaqahSection />
-
-      {/* মুহাসাবাহ টেবিল সেকশন */}
-      {/* <MuhasabahTable /> */}
     </div>
   );
 };
