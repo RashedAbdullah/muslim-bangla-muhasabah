@@ -1,3 +1,4 @@
+import { MdArrowOutward } from "react-icons/md";
 import React from "react";
 
 const OjifaSection = () => {
@@ -6,7 +7,18 @@ const OjifaSection = () => {
       <h3 className="text-xl font-bold text-gray-800">অজিফা সেকশন</h3>
       <div className="space-y-4">
         <div className="flex justify-between items-center ">
-          <p className="text-lg text-gray-700">আজকে কুরআন তিলাওয়াত করেছেন?</p>
+          <div className="flex justify-center items-center align-middle gap-3">
+            <p className="text-lg text-gray-700">আজকে কুরআন তিলাওয়াত করেছেন?</p>
+            <a
+              href="https://muslimbangla.com/quran"
+              target="_blank"
+              className="flex  justify-center items-center gap-1 underline"
+            >
+              {" "}
+              করুন
+              <MdArrowOutward />
+            </a>
+          </div>
           <input
             type="checkbox"
             className="rounded-md border-gray-300 focus:ring-2 focus:ring-green-600"
@@ -34,14 +46,36 @@ const OjifaSection = () => {
           <p className="text-lg text-gray-700 font-bold">সকাল-সন্ধ্যার আমল</p>
         </div>
         <div className="flex justify-between items-center ">
-          <p className="text-lg text-gray-700">ফজরের আমল</p>
+          <div className="flex justify-center items-center align-middle gap-3">
+            <p className="text-lg text-gray-700">ফজরের আমল </p>
+            <a
+              href=""
+              target="_blank"
+              className="flex  justify-center items-center gap-1 underline"
+            >
+              {" "}
+              দেখুন
+              <MdArrowOutward />
+            </a>
+          </div>
           <input
             type="checkbox"
             className="rounded-md border-gray-300 focus:ring-2 focus:ring-green-600"
           />
         </div>
         <div className="flex justify-between items-center border-b pb-4">
-          <p className="text-lg text-gray-700">মাগরিরের আমল</p>
+          <div className="flex justify-center items-center align-middle gap-3">
+            <p className="text-lg text-gray-700">মাগরিরের আমল</p>
+            <a
+              href=""
+              target="_blank"
+              className="flex  justify-center items-center gap-1 underline"
+            >
+              {" "}
+              দেখুন
+              <MdArrowOutward />
+            </a>
+          </div>
           <input
             type="checkbox"
             className="rounded-md border-gray-300 focus:ring-2 focus:ring-green-600"
