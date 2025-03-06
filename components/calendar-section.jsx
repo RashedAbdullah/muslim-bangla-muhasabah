@@ -47,6 +47,9 @@ const CalendarSection = () => {
 
   const options = { year: "numeric", month: "long" };
 
+  // Check if next month is disabled
+  const isNextMonthDisabled = selectedYear === currentYear && selectedMonth === currentMonth;
+
   return (
     <div className="space-y-5">
       {/* মাস ও বছর নির্বাচন */}
@@ -67,7 +70,10 @@ const CalendarSection = () => {
 
         <button
           onClick={() => changeMonth(1)}
-          className="p-3 rounded-full bg-green-500 text-white shadow-md hover:bg-green-700 transition-all duration-300 transform hover:scale-110 focus:ring focus:ring-green-300"
+          className={`p-3 rounded-full ${
+            isNextMonthDisabled ? "bg-gray-400 cursor-not-allowed" : "bg-green-500 text-white"
+          } shadow-md hover:bg-green-700 transition-all duration-300 transform hover:scale-110 focus:ring focus:ring-green-300`}
+          disabled={isNextMonthDisabled}
         >
           <IoChevronForward size={24} />
         </button>
