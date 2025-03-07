@@ -48,7 +48,8 @@ const CalendarSection = () => {
   const options = { year: "numeric", month: "long" };
 
   // Check if next month is disabled
-  const isNextMonthDisabled = selectedYear === currentYear && selectedMonth === currentMonth;
+  const isNextMonthDisabled =
+    selectedYear === currentYear && selectedMonth === currentMonth;
 
   return (
     <div className="space-y-5">
@@ -62,7 +63,11 @@ const CalendarSection = () => {
         </button>
 
         <h3 className="text-lg font-semibold text-gray-900 bg-gray-200 px-6 py-3 rounded-lg shadow-md">
-          {new Date(selectedYear, selectedMonth, selectedDate).toLocaleDateString("bn", {
+          {new Date(
+            selectedYear,
+            selectedMonth,
+            selectedDate
+          ).toLocaleDateString("bn", {
             ...options,
             day: "numeric",
           })}
@@ -71,7 +76,9 @@ const CalendarSection = () => {
         <button
           onClick={() => changeMonth(1)}
           className={`p-3 rounded-full ${
-            isNextMonthDisabled ? "bg-gray-400 cursor-not-allowed" : "bg-green-500 text-white"
+            isNextMonthDisabled
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-green-500 text-white"
           } shadow-md hover:bg-green-700 transition-all duration-300 transform hover:scale-110 focus:ring focus:ring-green-300`}
           disabled={isNextMonthDisabled}
         >
