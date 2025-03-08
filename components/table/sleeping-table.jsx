@@ -1,62 +1,69 @@
-import { daysOfOneMonth } from "@/lib/days";
 import { getEngToBn } from "@/utils/en-to-bn";
-import { useState } from "react";
-import { RxCrossCircled } from "react-icons/rx";
-import { IoIosCheckmark } from "react-icons/io";
+import {
+  MdOutlineKeyboardDoubleArrowDown,
+  MdOutlineKeyboardDoubleArrowUp,
+} from "react-icons/md";
 
 const SleepingTable = () => {
-  const [progress, setProgress] = useState(
-    Array(4).fill(Array(daysOfOneMonth.length).fill(false))
-  );
-
-  const toggleProgress = (rowIndex, dayIndex) => {
-    setProgress((prev) => {
-      const newState = prev.map((row, rIdx) =>
-        rIdx === rowIndex
-          ? row.map((day, dIdx) => (dIdx === dayIndex ? !day : day))
-          : row
-      );
-      return newState;
-    });
-  };
+  // ঘুমের আমল সংক্রান্ত ডাটা ডাইনামিকভাবে সংরক্ষণ
+  const amalData = [
+    { name: "সুরা মুলক", current: 25, last: 30 },
+    { name: "ইখলাস, ফালাক, নাস", current: 28, last: 31 },
+    { name: "আয়াতুল কুরসী", current: 26, last: 29 },
+    { name: "সূরা বাকারার শেষ দুই আয়াত", current: 27, last: 30 },
+  ];
 
   return (
-    <div className="mb-2 bg-gray-50 shadow-md rounded-xl overflow-x-auto scrollbar">
-      <table className="table-auto w-full text-center border-collapse border border-gray-300">
+    <div className="mb-6 bg-white shadow-lg rounded-lg overflow-x-auto scrollbar">
+      <table className="table-auto w-full text-center border border-gray-300 bg-white">
         <thead>
-          <tr className="bg-gray-200">
-            <th className="border px-4 py-2">ঘুমের আমল</th>
-            {daysOfOneMonth.map((ind) => (
-              <th key={ind} className="border px-2 py-1 text-sm">
-                {getEngToBn(ind)}
-              </th>
-            ))}
+          <tr className="bg-gray-100 text-gray-900 text-lg">
+            <th className="border px-5 py-2">ঘুমের আমল</th>
+            <th className="border px-5 py-2">বর্তমান মাস</th>
+            <th className="border px-5 py-2">বিগত মাস</th>
+            <th className="border px-5 py-2">উন্নতি / অবনতি</th>
+            <th className="border px-5 py-2">মন্তব্য</th>
           </tr>
         </thead>
         <tbody>
-          {[
-            "সুরা মুলক",
-            "ইখলাস, ফালাক, নাস",
-            "আয়াতুল কুরসী",
-            "সূরা বাকারার শেষ দুই আয়াত",
-          ].map((amal, rowIndex) => (
-            <tr key={rowIndex}>
-              <td className="border px-4 py-2 font-medium">{amal}</td>
-              {daysOfOneMonth.map((day, dayIndex) => (
-                <td
-                  key={dayIndex}
-                  className="border px-2 py-1 cursor-pointer hover:bg-gray-100 text-sm"
-                  onClick={() => toggleProgress(rowIndex, dayIndex)}
-                >
-                  {progress[rowIndex][dayIndex] ? (
-                    <IoIosCheckmark color="green" />
-                  ) : (
-                    <RxCrossCircled color="red" />
-                  )}
+          {amalData.map((item, index) => {
+            const improvement = item.current > item.last ? "উন্নতি" : "অবনতি";
+            const improvementColor =
+              item.current > item.last ? "text-green-600" : "text-red-600";
+            const improvementIcon =
+              item.current > item.last ? (
+                <MdOutlineKeyboardDoubleArrowUp color="green" />
+              ) : (
+                <MdOutlineKeyboardDoubleArrowDown color="red" />
+              );
+
+            return (
+              <tr
+                key={index}
+                className={`hover:bg-gray-100 ${
+                  index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                }`}
+              >
+                <td className="border px-5 py-2 text-gray-800">
+                  {item.name}
                 </td>
-              ))}
-            </tr>
-          ))}
+                <td className="border px-5 py-2 text-gray-800">
+                  {getEngToBn(item.current)} / ৩০
+                </td>
+                <td className="border px-5 py-2 text-gray-800">
+                  {getEngToBn(item.last)} / ৩১
+                </td>
+                <td
+                  className={`border-y px-5 py-2 flex items-center gap-2 justify-center ${improvementColor}`}
+                >
+                  {improvement} {improvementIcon}
+                </td>
+                <td className="border px-5 py-2 text-gray-800">
+                  {item.current < item.last ? "উন্নতি প্রয়োজন" : "ভালো চলছে"}
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

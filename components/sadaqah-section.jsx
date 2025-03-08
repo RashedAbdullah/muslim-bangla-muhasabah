@@ -13,9 +13,13 @@ const SadaqahSection = () => {
           />
         </div>
         <div className="flex justify-between items-center border-b pb-4">
-          <button className="text-lg bg-gray-700 text-white py-2 px-4 rounded-xl">
+          <a
+            href="https://muslimbangla.com/donation"
+            target="_blank"
+            className="text-lg bg-gray-700 text-white py-2 px-4 rounded-xl"
+          >
             ডোনেশন
-          </button>
+          </a>
           <input
             type="number"
             className="max-w-[120px] p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-600"

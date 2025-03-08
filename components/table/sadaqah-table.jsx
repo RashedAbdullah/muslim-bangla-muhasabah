@@ -1,14 +1,14 @@
 import { getEngToBn } from "@/utils/en-to-bn";
+import React from "react";
 import {
   MdOutlineKeyboardDoubleArrowDown,
   MdOutlineKeyboardDoubleArrowUp,
 } from "react-icons/md";
 
-const MorningEveningTable = () => {
-  // ডাটা ডাইনামিক করার জন্য বর্তমান ও বিগত মাসের তথ্য
-  const amalData = [
-    { name: "ফজরের আমল", current: 25, last: 30 },
-    { name: "মাগরিবের আমল", current: 28, last: 31 },
+const SadaqahTable = () => {
+  // সাদাকাহ সংক্রান্ত ডাটা
+  const sadaqahData = [
+    { name: "সাদাকাহ", current: 2053, last: 12010 }, // বর্তমান ও বিগত মাসের পরিমাণ
   ];
 
   return (
@@ -16,7 +16,7 @@ const MorningEveningTable = () => {
       <table className="table-auto w-full text-center border border-gray-300 bg-white">
         <thead>
           <tr className="bg-gray-100 text-gray-900 text-lg">
-            <th className="border px-5 py-2">আমল</th>
+            <th className="border px-5 py-2">সাদাকাহ</th>
             <th className="border px-5 py-2">বর্তমান মাস</th>
             <th className="border px-5 py-2">বিগত মাস</th>
             <th className="border px-5 py-2">উন্নতি / অবনতি</th>
@@ -24,7 +24,7 @@ const MorningEveningTable = () => {
           </tr>
         </thead>
         <tbody>
-          {amalData.map((item, index) => {
+          {sadaqahData.map((item, index) => {
             const improvement = item.current > item.last ? "উন্নতি" : "অবনতি";
             const improvementColor =
               item.current > item.last ? "text-green-600" : "text-red-600";
@@ -46,10 +46,10 @@ const MorningEveningTable = () => {
                   {item.name}
                 </td>
                 <td className="border px-5 py-2 text-gray-800">
-                  {getEngToBn(item.current)} / ৩০
+                  {getEngToBn(item.current)}৳
                 </td>
                 <td className="border px-5 py-2 text-gray-800">
-                  {getEngToBn(item.last)} / ৩১
+                  {getEngToBn(item.last)}৳
                 </td>
                 <td
                   className={`border-y px-5 py-2 flex items-center gap-2 justify-center ${improvementColor}`}
@@ -57,7 +57,7 @@ const MorningEveningTable = () => {
                   {improvement} {improvementIcon}
                 </td>
                 <td className="border px-5 py-2 text-gray-800">
-                  {item.current < item.last ? "উন্নতি প্রয়োজন" : "ভালো চলছে"}
+                  {item.current > item.last ? "মাশাআল্লাহ" : "উন্নতি প্রয়োজন"}
                 </td>
               </tr>
             );
@@ -68,4 +68,4 @@ const MorningEveningTable = () => {
   );
 };
 
-export default MorningEveningTable;
+export default SadaqahTable;

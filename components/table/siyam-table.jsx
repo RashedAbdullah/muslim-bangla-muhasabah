@@ -1,52 +1,51 @@
-import { daysOfOneMonth } from "@/lib/days";
 import { getEngToBn } from "@/utils/en-to-bn";
-import { useState } from "react";
-import { RxCrossCircled } from "react-icons/rx";
-import { IoIosCheckmark } from "react-icons/io";
+import {
+  MdOutlineKeyboardDoubleArrowDown,
+  MdOutlineKeyboardDoubleArrowUp,
+} from "react-icons/md";
 
-const Siyamtable = () => {
-  const [fasting, setFasting] = useState(
-    Array(daysOfOneMonth.length).fill(false)
-  );
-
-  const toggleFasting = (index) => {
-    setFasting((prev) => {
-      const newState = [...prev];
-      newState[index] = !newState[index];
-      return newState;
-    });
-  };
+const SiyamTable = () => {
+  // ডেমো ডাটা (আপনার ডাটার সাথে পরিবর্তন করতে পারেন)
+  const currentMonth = 25; // বর্তমান মাসে রাখা রোযা সংখ্যা
+  const lastMonth = 30; // গত মাসের সংখ্যা
+  const improvement = currentMonth > lastMonth ? "উন্নতি" : "অবনতি";
+  const improvementColor =
+    currentMonth > lastMonth ? "text-green-600" : "text-red-600";
+  const improvementIcon =
+    currentMonth > lastMonth ? (
+      <MdOutlineKeyboardDoubleArrowUp color="green" />
+    ) : (
+      <MdOutlineKeyboardDoubleArrowDown color="red" />
+    );
 
   return (
-    <div className="mb-2 bg-gray-50 shadow-md rounded-xl">
+    <div className="mb-6 bg-white shadow-lg rounded-lg">
       <div className="overflow-x-auto scrollbar">
-        <table className="table-auto w-full text-center border-collapse border border-gray-300">
+        <table className="table-auto w-full text-center border border-gray-300 bg-white">
           <thead>
-            <tr className="bg-gray-200">
-              <th className="border px-4 py-2">রোযা</th>
-              {daysOfOneMonth.map((ind) => (
-                <th key={ind} className="border px-2 py-1 text-sm">
-                  {getEngToBn(ind)}
-                </th>
-              ))}
+            <tr className="bg-gray-100 text-gray-900 text-lg">
+              <th className="border px-5 py-2">রোযা</th>
+              <th className="border px-5 py-2">বর্তমান মাস</th>
+              <th className="border px-5 py-2">উন্নতি / অবনতি</th>
+              <th className="border px-5 py-2">মন্তব্য</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="border px-4 py-2 font-medium">রোযা</td>
-              {daysOfOneMonth.map((day, index) => (
-                <td
-                  key={index}
-                  className="border px-2 py-1 cursor-pointer hover:bg-gray-100 text-sm"
-                  onClick={() => toggleFasting(index)}
-                >
-                  {fasting[index] ? (
-                    <IoIosCheckmark color="green" />
-                  ) : (
-                    <RxCrossCircled color="red" />
-                  )}
-                </td>
-              ))}
+            <tr className="bg-gray-50 hover:bg-gray-200">
+              <td className="border px-5 py-2 text-gray-800">
+                রোযা
+              </td>
+              <td className="border px-5 py-2 text-gray-800">
+                {getEngToBn(currentMonth)} / ৩০
+              </td>
+              <td
+                className={`border-y px-5 py-2 flex items-center gap-2 justify-center ${improvementColor}`}
+              >
+                {improvement} {improvementIcon}
+              </td>
+              <td className="border px-5 py-2 text-gray-800">
+                {currentMonth < lastMonth ? "উন্নতি প্রয়োজন" : "ভালো চলছে"}
+              </td>
             </tr>
           </tbody>
         </table>
@@ -55,4 +54,4 @@ const Siyamtable = () => {
   );
 };
 
-export default Siyamtable;
+export default SiyamTable;
