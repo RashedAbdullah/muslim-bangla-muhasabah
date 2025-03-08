@@ -1,37 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bangla Muslim Muhasabah
 
-## Getting Started
+**Bangla Muslim Muhasabah** is a tool designed for self-reflection and spiritual growth. The project provides a structured approach for Muslims to review their actions, habits, and progress in various aspects of their religious practices, including knowledge (Ilm), Dawah (inviting others to Islam), and Sadaqah (charity). This tool helps individuals track their efforts, evaluate improvements, and focus on areas that require development.
 
-First, run the development server:
+## Features
 
+- **Ilm (Knowledge)**: Track your learning and progress in religious knowledge, including daily Quran study and attending weekly gatherings.
+- **Dawah (Inviting to Allah)**: Monitor your daily Dawah efforts and measure your progress in spreading the message of Islam.
+- **Sadaqah (Charity)**: Keep track of your charity donations and observe the improvements or setbacks over time.
+
+## Table of Contents
+
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [Features](#features)
+4. [Contributing](#contributing)
+5. [License](#license)
+
+## Installation
+
+To use the Bangla Muslim Muhasabah app locally, follow these instructions:
+
+### Prerequisites
+Make sure you have the following installed:
+- Node.js: [Download and Install](https://nodejs.org/)
+- npm (Node Package Manager): [Install npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+
+### Clone the Repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# muslim-bangla-muhasabah
+git clone https://github.com/your-username/bangla-muslim-muhasabah.git
+cd bangla-muslim-muhasabah
