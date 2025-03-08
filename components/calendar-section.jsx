@@ -62,7 +62,7 @@ const CalendarSection = () => {
           <IoChevronBack size={24} />
         </button>
 
-        <h3 className="text-lg font-semibold text-gray-900 bg-gray-200 px-6 py-3 rounded-lg shadow-md">
+        <h3 className="text-lg font-semibold text-gray-900 bg-gray-200 px-6 py-3 rounded-xl shadow-md">
           {new Date(
             selectedYear,
             selectedMonth,
@@ -77,9 +77,9 @@ const CalendarSection = () => {
           onClick={() => changeMonth(1)}
           className={`p-3 rounded-full ${
             isNextMonthDisabled
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-green-500 text-white"
-          } shadow-md hover:bg-green-700 transition-all duration-300 transform hover:scale-110 focus:ring focus:ring-green-300`}
+              ? "bg-gray-200 cursor-not-allowed"
+              : "bg-green-500 text-white shadow-md hover:bg-green-700 transition-all duration-300 transform hover:scale-110 focus:ring focus:ring-green-300"
+          } `}
           disabled={isNextMonthDisabled}
         >
           <IoChevronForward size={24} />
@@ -101,12 +101,12 @@ const CalendarSection = () => {
               <div
                 key={date}
                 onClick={() => !isDisabled && setSelectedDate(date)}
-                className={`px-5 py-3 rounded-lg cursor-pointer transition-all duration-300 text-center shadow-md ${
+                className={`flex justify-center items-center  my-1 transition-all duration-300 text-center ${
                   selectedDate === date
-                    ? "bg-green-600 text-white font-bold transform scale-110"
+                    ? "bg-green-600 text-white font-bold transform scale-110 py-1 px-3 rounded-xl gap-2 cursor-pointer"
                     : isDisabled
-                    ? "bg-gray-100 cursor-not-allowed"
-                    : "bg-gray-100 hover:bg-gray-200"
+                    ? "cursor-not-allowed h-10 w-10 rounded-full border bg-gray-200"
+                    : "bg-gray-100 hover:bg-gray-200 h-10 w-10 rounded-full cursor-pointer shadow-md"
                 }`}
               >
                 <span className="block text-sm text-white">

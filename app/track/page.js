@@ -11,7 +11,7 @@ import SleepingTable from "@/components/table/sleeping-table";
 
 const TrackingHistory = () => {
   return (
-    <div className="p-2 shadow-lg rounded-lg mt-10 border-gray-200">
+    <div className="p-2 shadow-lg rounded-xl mt-10 border-gray-200">
       <div className="mb-6">
         <h1 className="text-center text-3xl font-extrabold text-gray-800 mb-4">
           মাসিক মুহাসাবা রিপোর্ট

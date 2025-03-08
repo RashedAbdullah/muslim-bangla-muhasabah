@@ -2,6 +2,8 @@
 import { daysOfOneMonth } from "@/lib/days";
 import { getEngToBn } from "@/utils/en-to-bn";
 import React, { useState } from "react";
+import { RxCrossCircled } from "react-icons/rx";
+import { IoIosCheckmark } from "react-icons/io";
 
 const SalahTable = () => {
   const [salahData, setSalahData] = useState(
@@ -46,7 +48,11 @@ const SalahTable = () => {
                       className="border px-2 py-2 cursor-pointer text-sm"
                       onClick={() => toggleCheck(salahIndex, dayIndex)}
                     >
-                      {salahData[salahIndex][dayIndex] ? "✅" : "❌"}
+                      {salahData[salahIndex][dayIndex] ? (
+                        <IoIosCheckmark color="green" />
+                      ) : (
+                        <RxCrossCircled color="red" />
+                      )}
                     </td>
                   ))}
                 </tr>

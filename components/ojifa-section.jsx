@@ -14,8 +14,6 @@ const OjifaSection = () => {
               target="_blank"
               className="flex  justify-center items-center gap-1 underline"
             >
-              {" "}
-              করুন
               <MdArrowOutward />
             </a>
           </div>

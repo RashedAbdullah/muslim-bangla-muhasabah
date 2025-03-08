@@ -1,6 +1,8 @@
 import { daysOfOneMonth } from "@/lib/days";
 import { getEngToBn } from "@/utils/en-to-bn";
 import { useState } from "react";
+import { RxCrossCircled } from "react-icons/rx";
+import { IoIosCheckmark } from "react-icons/io";
 
 const MorningEveningTable = () => {
   const [progress, setProgress] = useState(
@@ -19,7 +21,7 @@ const MorningEveningTable = () => {
   };
 
   return (
-    <div className="mb-2 bg-gray-50 shadow-md rounded-lg overflow-x-auto scrollbar">
+    <div className="mb-2 bg-gray-50 shadow-md rounded-xl overflow-x-auto scrollbar">
       <table className="table-auto w-full text-center border-collapse border border-gray-300">
         <thead>
           <tr className="bg-gray-200">
@@ -41,7 +43,11 @@ const MorningEveningTable = () => {
                   className="border px-2 py-1 cursor-pointer hover:bg-gray-100 text-sm"
                   onClick={() => toggleProgress(rowIndex, dayIndex)}
                 >
-                  {progress[rowIndex][dayIndex] ? "✅" : "❌"}
+                  {progress[rowIndex][dayIndex] ? (
+                    <IoIosCheckmark color="green" />
+                  ) : (
+                    <RxCrossCircled color="red" />
+                  )}
                 </td>
               ))}
             </tr>

@@ -1,6 +1,8 @@
 import { daysOfOneMonth } from "@/lib/days";
 import { getEngToBn } from "@/utils/en-to-bn";
 import { useState } from "react";
+import { RxCrossCircled } from "react-icons/rx";
+import { IoIosCheckmark } from "react-icons/io";
 
 const Siyamtable = () => {
   const [fasting, setFasting] = useState(
@@ -16,7 +18,7 @@ const Siyamtable = () => {
   };
 
   return (
-    <div className="mb-2 bg-gray-50 shadow-md rounded-lg">
+    <div className="mb-2 bg-gray-50 shadow-md rounded-xl">
       <div className="overflow-x-auto scrollbar">
         <table className="table-auto w-full text-center border-collapse border border-gray-300">
           <thead>
@@ -38,7 +40,11 @@ const Siyamtable = () => {
                   className="border px-2 py-1 cursor-pointer hover:bg-gray-100 text-sm"
                   onClick={() => toggleFasting(index)}
                 >
-                  {fasting[index] ? "✅" : "❌"}
+                  {fasting[index] ? (
+                    <IoIosCheckmark color="green" />
+                  ) : (
+                    <RxCrossCircled color="red" />
+                  )}
                 </td>
               ))}
             </tr>
