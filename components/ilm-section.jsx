@@ -18,7 +18,7 @@ const IlmSection = () => {
           <textarea
             className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-600"
             placeholder="নোট লিখুন..."
-            rows="4"
+            rows="3"
           />
         </div>
 
@@ -35,7 +35,7 @@ const IlmSection = () => {
           <textarea
             className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-600"
             placeholder="নোট লিখুন..."
-            rows="4"
+            rows="3"
           />
         </div>
       </div>
