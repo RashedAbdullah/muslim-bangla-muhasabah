@@ -7,9 +7,9 @@ import {
 const QuranTableSection = () => {
   // ডাটা ডাইনামিক করার জন্য বর্তমান ও বিগত মাসের তথ্য
   const quranData = [
-    { name: "তিলাওয়াত", current: 25, last: 30 },
-    { name: "পৃষ্ঠা সংখ্যা", current: 28, last: 31 },
-    { name: "আয়াত সংখ্যা", current: 100, last: 90 },
+    { name: "তিলাওয়াত", current: 25, last: 30, showBoth: true },
+    { name: "পৃষ্ঠা সংখ্যা", current: 28, last: 31, showBoth: false },
+    { name: "আয়াত সংখ্যা", current: 100, last: 90, showBoth: false },
   ];
 
   return (
@@ -17,11 +17,11 @@ const QuranTableSection = () => {
       <table className="table-auto w-full text-center border border-gray-300 bg-white">
         <thead>
           <tr className="bg-gray-100 text-gray-900 text-lg">
-            <th className="border px-5 py-2">কুরআন</th>
-            <th className="border px-5 py-2">বর্তমান মাস</th>
-            <th className="border px-5 py-2">বিগত মাস</th>
-            <th className="border px-5 py-2">উন্নতি / অবনতি</th>
-            <th className="border px-5 py-2">মন্তব্য</th>
+            <th className="border w-64 py-2">কুরআন</th>
+            <th className="border w-32 py-2">বর্তমান মাস</th>
+            <th className="border w-32 py-2">বিগত মাস</th>
+            <th className="border w-32 py-2">উন্নতি / অবনতি</th>
+            <th className="border w-32 py-2">মন্তব্য</th>
           </tr>
         </thead>
         <tbody>
@@ -43,21 +43,21 @@ const QuranTableSection = () => {
                   index % 2 === 0 ? "bg-gray-50" : "bg-white"
                 }`}
               >
-                <td className="border px-5 py-2 text-gray-800">
-                  {item.name}
+                <td className="border w-64 py-2 text-gray-800">{item.name}</td>
+                {/* তিলাওয়াত হলে ২৫ / ৩০ দেখাবে, নাহলে শুধু সংখ্যা */}
+                <td className="border w-32 py-2 text-gray-800">
+                  {item.showBoth
+                    ? `${getEngToBn(item.current)} / ${getEngToBn(item.last)}`
+                    : getEngToBn(item.current)}
                 </td>
-                <td className="border px-5 py-2 text-gray-800">
-                  {getEngToBn(item.current)} / ৩০
+                <td className="border w-32 py-2 text-gray-800">
+                  {getEngToBn(item.last)}
                 </td>
-                <td className="border px-5 py-2 text-gray-800">
-                  {getEngToBn(item.last)} / ৩১
+                <td className={`border w-32-y py-2 ${improvementColor}`}>
+                  {improvement}
+                  {/* {improvementIcon} */}
                 </td>
-                <td
-                  className={`border-y px-5 py-2 flex items-center gap-2 justify-center ${improvementColor}`}
-                >
-                  {improvement} {improvementIcon}
-                </td>
-                <td className="border px-5 py-2 text-gray-800">
+                <td className="border w-32 py-2 text-gray-800">
                   {item.current < item.last ? "উন্নতি প্রয়োজন" : "ভালো চলছে"}
                 </td>
               </tr>

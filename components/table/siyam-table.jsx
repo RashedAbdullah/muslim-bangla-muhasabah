@@ -24,26 +24,25 @@ const SiyamTable = () => {
         <table className="table-auto w-full text-center border border-gray-300 bg-white">
           <thead>
             <tr className="bg-gray-100 text-gray-900 text-lg">
-              <th className="border px-5 py-2">রোযা</th>
-              <th className="border px-5 py-2">বর্তমান মাস</th>
-              <th className="border px-5 py-2">উন্নতি / অবনতি</th>
-              <th className="border px-5 py-2">মন্তব্য</th>
+              <th className="border w-64 py-2">রোযা</th>
+              <th className="border w-32 py-2">বর্তমান মাস</th>
+              <th className="border w-64 py-2">উন্নতি / অবনতি</th>
+              <th className="border w-32 py-2">মন্তব্য</th>
             </tr>
           </thead>
           <tbody>
             <tr className="bg-gray-50 hover:bg-gray-200">
-              <td className="border px-5 py-2 text-gray-800">
-                রোযা
-              </td>
-              <td className="border px-5 py-2 text-gray-800">
+              <td className="border w-64 py-2 text-gray-800">রোযা</td>
+              <td className="border w-32 py-2 text-gray-800">
                 {getEngToBn(currentMonth)} / ৩০
               </td>
               <td
-                className={`border-y px-5 py-2 flex items-center gap-2 justify-center ${improvementColor}`}
+                className={`border-y w-64 py-2 ${improvementColor}`}
               >
-                {improvement} {improvementIcon}
+                {improvement}
+                {/* {improvementIcon} */}
               </td>
-              <td className="border px-5 py-2 text-gray-800">
+              <td className="border w-32 py-2 text-gray-800">
                 {currentMonth < lastMonth ? "উন্নতি প্রয়োজন" : "ভালো চলছে"}
               </td>
             </tr>
