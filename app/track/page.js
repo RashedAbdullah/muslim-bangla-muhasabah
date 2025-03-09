@@ -62,7 +62,7 @@ const TrackingHistory = () => {
 
   return (
     <div className="p-4 md:p-6 bg-white shadow-2xl rounded-2xl mt-10 border border-gray-300">
-      <div id="tracking-report" className="sm:px-32 mx-auto">
+      <div id="tracking-report" className="px-32 mx-auto">
         {/* শিরোনাম */}
         <div className="mb-8">
           <h1 className="text-center text-3xl font-extrabold text-gray-900 mb-6 tracking-wide">
