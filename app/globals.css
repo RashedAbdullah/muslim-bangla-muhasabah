@@ -33,8 +33,14 @@ body {
   background: #555;
 }
 
-
 #pdf-report {
-  max-width: 100%; /* Ensure it fits within the mobile viewport */
-  overflow: hidden;
+  max-width: 100%; /* Ensures content stays within the screen bounds */
+  overflow: auto; /* Allows scrolling if needed */
+}
+
+@media (max-width: 768px) {
+  #pdf-report {
+    width: 100%; /* Make it full-width on mobile */
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
 }

@@ -50,14 +50,16 @@ const TrackingHistory = () => {
     const input = document.getElementById("pdf-report"); // PDF এর জন্য আলাদা ID ব্যবহার করবো
     input.style.display = "block"; // এটি দৃশ্যমান করবো শুধু PDF জেনারেট করার সময়
 
-    // Adjust the canvas scale for better resolution on mobile
-    const scale = window.innerWidth <= 768 ? 3 : 2; // Increase scale for mobile
+    // Adjust the scale for mobile devices (higher scale for better resolution)
+    const scale = window.innerWidth <= 768 ? 3 : 2; // Increase scale for mobile devices
+
+    // Use html2canvas to render the content to canvas
     html2canvas(input, { scale }).then((canvas) => {
+      console.log(canvas); // Debug the canvas
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
 
-      // Dynamically adjust image width and height
-      const imgWidth = 210;
+      const imgWidth = 210; // A4 width in mm
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
       pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
@@ -66,7 +68,7 @@ const TrackingHistory = () => {
       setIsGenerating(false);
       toast.success("📄 PDF ডাউনলোড হয়েছে!");
 
-      input.style.display = "none"; // PDF জেনারেট হওয়ার পর এটি হাইড করে দিবো
+      input.style.display = "none"; // Hide after generating the PDF
     });
   };
 
