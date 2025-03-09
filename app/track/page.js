@@ -50,9 +50,13 @@ const TrackingHistory = () => {
     const input = document.getElementById("pdf-report"); // PDF এর জন্য আলাদা ID ব্যবহার করবো
     input.style.display = "block"; // এটি দৃশ্যমান করবো শুধু PDF জেনারেট করার সময়
 
-    html2canvas(input, { scale: 2 }).then((canvas) => {
+    // Adjust the canvas scale for better resolution on mobile
+    const scale = window.innerWidth <= 768 ? 3 : 2; // Increase scale for mobile
+    html2canvas(input, { scale }).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
+
+      // Dynamically adjust image width and height
       const imgWidth = 210;
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
 

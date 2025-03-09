@@ -32,3 +32,9 @@ body {
 .scrollbar::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+
+#pdf-report {
+  max-width: 100%; /* Ensure it fits within the mobile viewport */
+  overflow: hidden;
+}
