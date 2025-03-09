@@ -77,7 +77,7 @@ const TrackingHistory = () => {
         {/* শিরোনাম */}
         <div className="mb-8">
           <h1 className="text-center text-3xl font-extrabold text-gray-900 mb-6 tracking-wide">
-            📊 মাসিক মুহাসাবা রিপোর্ট
+            মাসিক মুহাসাবা রিপোর্ট
           </h1>
           <div className="flex flex-col md:flex-row justify-between text-lg text-gray-800 border-b-2 pb-4 font-semibold">
             <h3 className="text-center md:text-left">

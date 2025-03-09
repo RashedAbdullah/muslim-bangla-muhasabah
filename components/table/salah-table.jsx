@@ -7,7 +7,7 @@ import {
 const SalahTable = () => {
   return (
     <div className="mb-6">
-      <div className="overflow-x-auto scrollbar shadow-lg rounded-lg">
+      <div className="overflow-x-auto scrollbar shadow-lg">
         <table className="table-auto w-full border border-gray-300 text-center bg-white">
           <thead>
             <tr className="bg-gray-100 text-gray-900 text-lg">

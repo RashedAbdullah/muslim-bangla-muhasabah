@@ -19,7 +19,7 @@ const SiyamTable = () => {
     );
 
   return (
-    <div className="mb-6 bg-white shadow-lg rounded-lg">
+    <div className="mb-6 bg-white shadow-lg">
       <div className="overflow-x-auto scrollbar">
         <table className="table-auto w-full text-center border border-gray-300 bg-white">
           <thead>

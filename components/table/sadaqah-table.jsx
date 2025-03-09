@@ -12,7 +12,7 @@ const SadaqahTable = () => {
   ];
 
   return (
-    <div className="mb-6 bg-white shadow-lg rounded-lg overflow-x-auto scrollbar">
+    <div className="mb-6 bg-white shadow-lg overflow-x-auto scrollbar">
       <table className="table-auto w-full text-center border border-gray-300 bg-white">
         <thead>
           <tr className="bg-gray-100 text-gray-900 text-lg">
