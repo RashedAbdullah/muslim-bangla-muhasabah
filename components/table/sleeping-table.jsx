@@ -1,8 +1,8 @@
 import { getEngToBn } from "@/utils/en-to-bn";
-import {
-  MdOutlineKeyboardDoubleArrowDown,
-  MdOutlineKeyboardDoubleArrowUp,
-} from "react-icons/md";
+// import {
+//   MdOutlineKeyboardDoubleArrowDown,
+//   MdOutlineKeyboardDoubleArrowUp,
+// } from "react-icons/md";
 
 const SleepingTable = () => {
   // ঘুমের আমল সংক্রান্ত ডাটা ডাইনামিকভাবে সংরক্ষণ

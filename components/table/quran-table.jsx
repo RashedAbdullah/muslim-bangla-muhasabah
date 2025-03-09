@@ -1,8 +1,8 @@
 import { getEngToBn } from "@/utils/en-to-bn";
-import {
-  MdOutlineKeyboardDoubleArrowDown,
-  MdOutlineKeyboardDoubleArrowUp,
-} from "react-icons/md";
+// import {
+//   MdOutlineKeyboardDoubleArrowDown,
+//   MdOutlineKeyboardDoubleArrowUp,
+// } from "react-icons/md";
 
 const QuranTableSection = () => {
   // ডাটা ডাইনামিক করার জন্য বর্তমান ও বিগত মাসের তথ্য
@@ -29,12 +29,12 @@ const QuranTableSection = () => {
             const improvement = item.current > item.last ? "উন্নতি" : "অবনতি";
             const improvementColor =
               item.current > item.last ? "text-green-600" : "text-red-600";
-            const improvementIcon =
-              item.current > item.last ? (
-                <MdOutlineKeyboardDoubleArrowUp color="green" />
-              ) : (
-                <MdOutlineKeyboardDoubleArrowDown color="red" />
-              );
+            // const improvementIcon =
+            //   item.current > item.last ? (
+            //     <MdOutlineKeyboardDoubleArrowUp color="green" />
+            //   ) : (
+            //     <MdOutlineKeyboardDoubleArrowDown color="red" />
+            //   );
 
             return (
               <tr

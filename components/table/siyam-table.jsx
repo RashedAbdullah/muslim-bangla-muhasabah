@@ -1,8 +1,8 @@
 import { getEngToBn } from "@/utils/en-to-bn";
-import {
-  MdOutlineKeyboardDoubleArrowDown,
-  MdOutlineKeyboardDoubleArrowUp,
-} from "react-icons/md";
+// import {
+//   MdOutlineKeyboardDoubleArrowDown,
+//   MdOutlineKeyboardDoubleArrowUp,
+// } from "react-icons/md";
 
 const SiyamTable = () => {
   // ডেমো ডাটা (আপনার ডাটার সাথে পরিবর্তন করতে পারেন)
@@ -11,12 +11,12 @@ const SiyamTable = () => {
   const improvement = currentMonth > lastMonth ? "উন্নতি" : "অবনতি";
   const improvementColor =
     currentMonth > lastMonth ? "text-green-600" : "text-red-600";
-  const improvementIcon =
-    currentMonth > lastMonth ? (
-      <MdOutlineKeyboardDoubleArrowUp color="green" />
-    ) : (
-      <MdOutlineKeyboardDoubleArrowDown color="red" />
-    );
+  // const improvementIcon =
+  //   currentMonth > lastMonth ? (
+  //     <MdOutlineKeyboardDoubleArrowUp color="green" />
+  //   ) : (
+  //     <MdOutlineKeyboardDoubleArrowDown color="red" />
+  //   );
 
   return (
     <div className="mb-6 bg-white shadow-lg">
@@ -36,9 +36,7 @@ const SiyamTable = () => {
               <td className="border w-32 py-2 text-gray-800">
                 {getEngToBn(currentMonth)} / ৩০
               </td>
-              <td
-                className={`border-y w-64 py-2 ${improvementColor}`}
-              >
+              <td className={`border-y w-64 py-2 ${improvementColor}`}>
                 {improvement}
                 {/* {improvementIcon} */}
               </td>
