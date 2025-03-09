@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { FaCopy, FaShareAlt, FaFilePdf } from "react-icons/fa";
-import { toast } from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
@@ -39,7 +39,7 @@ const TrackingHistory = () => {
       }
     } else {
       handleCopyLink();
-      toast("⚠️ আপনার ব্রাউজারে শেয়ার সাপোর্ট করে না, লিংক কপি করা হলো!");
+      toast("⚠️ আপনার ব্রাউজার শেয়ার সাপোর্ট করে না, লিংক কপি করা হলো!");
     }
   };
 
@@ -47,15 +47,14 @@ const TrackingHistory = () => {
   const handleGeneratePDF = () => {
     setIsGenerating(true);
 
-    const input = document.getElementById("pdf-report"); // PDF এর জন্য আলাদা ID ব্যবহার করবো
-    input.style.display = "block"; // এটি দৃশ্যমান করবো শুধু PDF জেনারেট করার সময়
+    const input = document.getElementById("pdf-report");
+    input.style.display = "block";
 
     // Adjust the scale for mobile devices (higher scale for better resolution)
     const scale = window.innerWidth <= 768 ? 3 : 2; // Increase scale for mobile devices
 
     // Use html2canvas to render the content to canvas
     html2canvas(input, { scale }).then((canvas) => {
-      console.log(canvas); // Debug the canvas
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
 
@@ -68,13 +67,13 @@ const TrackingHistory = () => {
       setIsGenerating(false);
       toast.success("📄 PDF ডাউনলোড হয়েছে!");
 
-      input.style.display = "none"; // Hide after generating the PDF
+      input.style.display = "none";
     });
   };
 
   return (
     <div className="p-4 md:p-6 bg-white shadow-2xl rounded-2xl mt-10 border border-gray-300">
-      <div className="px-32 mx-auto">
+      <div className="px-4 md:px-32 mx-auto">
         {/* শিরোনাম */}
         <div className="mb-8">
           <h1 className="text-center text-3xl font-extrabold text-gray-900 mb-6 tracking-wide">
@@ -101,18 +100,23 @@ const TrackingHistory = () => {
           <SadaqahTable />
         </div>
       </div>
-
+      <Toaster />
       {/* PDF-এর জন্য আলাদা ডিজাইন, ডিফল্টভাবে Hidden */}
       <div
         id="pdf-report"
         className="hidden px-16 py-10 mx-auto bg-white text-black"
       >
-        <h1 className="text-center text-3xl font-bold">
-          📄 মাসিক রিপোর্ট (PDF)
-        </h1>
-        <p className="text-center text-lg font-semibold">
-          নাম: রাশেদ আব্দুল্লাহ
-        </p>
+        <div className="mb-8">
+          <h1 className="text-center text-3xl font-extrabold text-gray-900 mb-6 tracking-wide">
+            📊 মাসিক মুহাসাবা রিপোর্ট
+          </h1>
+          <div className="flex flex-col md:flex-row justify-between text-lg text-gray-800 border-b-2 pb-4 font-semibold">
+            <h3 className="text-center md:text-left">
+              👤 নাম: রাশেদ আব্দুল্লাহ
+            </h3>
+            <p className="text-center md:text-right">📅 মাস: মার্চ</p>
+          </div>
+        </div>
         <SalahTable />
         <SiyamTable />
         <QuranTableSection />
@@ -128,7 +132,7 @@ const TrackingHistory = () => {
       </div>
 
       {/* কপি, শেয়ার ও PDF বাটন */}
-      <div className="flex justify-center gap-4 mt-8">
+      <div className="flex flex-col md:flex-row justify-center gap-4 mt-8">
         {/* মোবাইলে আইকন, ডেস্কটপে টেক্সট */}
         <button
           onClick={handleCopyLink}
@@ -155,7 +159,7 @@ const TrackingHistory = () => {
         <button
           onClick={handleGeneratePDF}
           disabled={isGenerating}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg shadow-md text-white transition relative group ${
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg shadow-md text-white transition relative group w-full md:w-auto ${
             isGenerating
               ? "bg-gray-400 cursor-not-allowed"
               : "bg-red-600 hover:bg-red-700"

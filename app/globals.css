@@ -34,13 +34,9 @@ body {
 }
 
 #pdf-report {
-  max-width: 100%; /* Ensures content stays within the screen bounds */
-  overflow: auto; /* Allows scrolling if needed */
-}
-
-@media (max-width: 768px) {
-  #pdf-report {
-    width: 100%; /* Make it full-width on mobile */
-    padding: 10px; /* Reduce padding for smaller screens */
-  }
+  width: 210mm; /* A4 width in mm */
+  height: 297mm; /* A4 height in mm */
+  padding: 16mm; /* Adjust padding to match your layout */
+  margin: 0 auto;
+  overflow: hidden;
 }
