@@ -138,7 +138,7 @@ const TrackingHistory = () => {
           onClick={handleCopyLink}
           className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 transition relative group"
         >
-          <FaCopy className="md:hidden" />
+          <FaCopy />
           <span className="hidden md:inline">লিংক কপি</span>
           <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition">
             কপি করুন
@@ -149,7 +149,7 @@ const TrackingHistory = () => {
           onClick={handleShare}
           className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-700 transition relative group"
         >
-          <FaShareAlt className="md:hidden" />
+          <FaShareAlt />
           <span className="hidden md:inline">শেয়ার করুন</span>
           <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition">
             শেয়ার করুন
@@ -165,7 +165,7 @@ const TrackingHistory = () => {
               : "bg-red-600 hover:bg-red-700"
           }`}
         >
-          <FaFilePdf className="md:hidden" />
+          <FaFilePdf />
           <span className="hidden md:inline">
             {isGenerating ? "জেনারেট হচ্ছে..." : "PDF তৈরি করুন"}
           </span>

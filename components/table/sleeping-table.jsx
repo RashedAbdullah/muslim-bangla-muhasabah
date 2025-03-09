@@ -30,12 +30,12 @@ const SleepingTable = () => {
             const improvement = item.current > item.last ? "উন্নতি" : "অবনতি";
             const improvementColor =
               item.current > item.last ? "text-green-600" : "text-red-600";
-            const improvementIcon =
-              item.current > item.last ? (
-                <MdOutlineKeyboardDoubleArrowUp color="green" />
-              ) : (
-                <MdOutlineKeyboardDoubleArrowDown color="red" />
-              );
+            // const improvementIcon =
+            //   item.current > item.last ? (
+            //     <MdOutlineKeyboardDoubleArrowUp color="green" />
+            //   ) : (
+            //     <MdOutlineKeyboardDoubleArrowDown color="red" />
+            //   );
 
             return (
               <tr
