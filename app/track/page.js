@@ -132,7 +132,7 @@ const TrackingHistory = () => {
       </div>
 
       {/* কপি, শেয়ার ও PDF বাটন */}
-      <div className="flex flex-col md:flex-row justify-center gap-4 mt-8">
+      <div className="mt-8 flex justify-center items-center gap-3">
         {/* মোবাইলে আইকন, ডেস্কটপে টেক্সট */}
         <button
           onClick={handleCopyLink}
@@ -159,7 +159,7 @@ const TrackingHistory = () => {
         <button
           onClick={handleGeneratePDF}
           disabled={isGenerating}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg shadow-md text-white transition relative group w-full md:w-auto ${
+          className={`flex items-center gap-2 px-4 py-2 rounded-lg shadow-md text-white transition relative group ${
             isGenerating
               ? "bg-gray-400 cursor-not-allowed"
               : "bg-red-600 hover:bg-red-700"
