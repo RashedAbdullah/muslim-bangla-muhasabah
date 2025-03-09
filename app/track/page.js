@@ -72,7 +72,7 @@ const TrackingHistory = () => {
   };
 
   return (
-    <div className="p-4 md:p-6 bg-white shadow-2xl rounded-2xl border border-gray-300">
+    <div className="p-4 md:p-6 bg-white shadow-2xl border border-gray-300">
       <div className="px-4 md:px-32 mx-auto">
         {/* শিরোনাম */}
         <div className="mb-8">
