@@ -13,31 +13,22 @@ import MuamalahSection from "@/components/muamalah-section";
 const HomePage = () => {
   return (
     <div className="container py-5 space-y-5">
-      {/* ক্যালেন্ডার সেকশন */}
       <CalendarSection />
 
-      {/* আইকন বক্স */}
       <DailyWorks />
 
-      {/* নামায ট্র্যাকার */}
       <SalahSection />
 
-      {/* সিয়াম সেকশন */}
       <SiyamSection />
 
-      {/* অজিফা সেকশন */}
       <OjifaSection />
 
-      {/* ইলম সেকশন */}
       <IlmSection />
 
-      {/* দাওয়াহ সেকশন */}
       <DawahSection />
 
-      {/* মুআমালাহ সেকশন */}
       <MuamalahSection />
 
-      {/* সাদাকাহ সেকশন */}
       <SadaqahSection />
     </div>
   );
