@@ -35,8 +35,8 @@ body {
 
 #pdf-report {
   width: 210mm; /* A4 width in mm */
-  height: 297mm; /* A4 height in mm */
+  /* height: 297mm; A4 height in mm */
   padding: 16mm; /* Adjust padding to match your layout */
   margin: 0 auto;
-  overflow: hidden;
+  overflow: auto;
 }

@@ -44,32 +44,32 @@ const TrackingHistory = () => {
   };
 
   // PDF তৈরি
-  const handleGeneratePDF = () => {
-    setIsGenerating(true);
+    const handleGeneratePDF = () => {
+      setIsGenerating(true);
 
-    const input = document.getElementById("pdf-report");
-    input.style.display = "block";
+      const input = document.getElementById("pdf-report");
+      input.style.display = "block";
 
-    // Adjust the scale for mobile devices (higher scale for better resolution)
-    const scale = window.innerWidth <= 768 ? 3 : 2; // Increase scale for mobile devices
+      // Adjust the scale for mobile devices (higher scale for better resolution)
+      const scale = window.innerWidth <= 768 ? 3 : 2; // Increase scale for mobile devices
 
-    // Use html2canvas to render the content to canvas
-    html2canvas(input, { scale }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
+      // Use html2canvas to render the content to canvas
+      html2canvas(input, { scale }).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
+        const pdf = new jsPDF("p", "mm", "a4");
 
-      const imgWidth = 210; // A4 width in mm
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        const imgWidth = 210; // A4 width in mm
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-      pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
-      pdf.save("tracking-history.pdf");
+        pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+        pdf.save("tracking-history.pdf");
 
-      setIsGenerating(false);
-      toast.success("📄 PDF ডাউনলোড হয়েছে!");
+        setIsGenerating(false);
+        toast.success("📄 PDF ডাউনলোড হয়েছে!");
 
-      input.style.display = "none";
-    });
-  };
+        input.style.display = "none";
+      });
+    };
 
   return (
     <div className="p-4 md:p-6 bg-white shadow-2xl rounded-2xl mt-10 border border-gray-300">
