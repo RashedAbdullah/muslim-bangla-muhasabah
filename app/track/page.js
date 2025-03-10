@@ -124,7 +124,7 @@ const TrackingHistory = () => {
               alt="Muhasabah icon"
               className="w-16 h-16"
             />
-            <h1 className="text-center text-2xl font-extrabold text-gray-900 mb-6 tracking-wide">
+            <h1 className="text-center text-3xl font-bold text-gray-900 mb-6 tracking-wide">
               মাসিক মুহাসাবা রিপোর্ট
             </h1>
             <img
