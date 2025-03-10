@@ -51,6 +51,12 @@ const TrackingHistory = () => {
     setIsGenerating(true);
 
     const input = document.getElementById("pdf-report");
+    if (!input) {
+      toast.error("❌ PDF তৈরির জন্য ডাটা পাওয়া যায়নি!");
+      setIsGenerating(false);
+      return;
+    }
+
     input.style.display = "block"; // পিডিএফ তৈরি করার জন্য এলিমেন্ট দেখানো
 
     const scale = window.innerWidth <= 768 ? 3 : 2;
@@ -59,8 +65,8 @@ const TrackingHistory = () => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
 
-      const imgWidth = 210; // A4 পেজের প্রস্থ (মিলিমিটারে)
-      const pageHeight = 297; // A4 পেজের উচ্চতা (মিলিমিটারে)
+      const imgWidth = 210;
+      const pageHeight = 297;
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
       let heightLeft = imgHeight;
@@ -72,7 +78,7 @@ const TrackingHistory = () => {
 
       // যদি অতিরিক্ত কন্টেন্ট থাকে, নতুন পৃষ্ঠা তৈরি করা
       while (heightLeft > 0) {
-        position -= pageHeight; // পরবর্তী পৃষ্ঠার জন্য অবস্থান আপডেট
+        position -= pageHeight;
         pdf.addPage();
         pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
         heightLeft -= pageHeight;
