@@ -5,7 +5,8 @@ import { FaCopy, FaShareAlt, FaFilePdf } from "react-icons/fa";
 import { toast, Toaster } from "react-hot-toast";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-
+import muhasabahIcon from "@/public/muhasabah_icon.png";
+import muslimBanglaIcon from "@/public/MuslimBangla.png";
 import DawahTable from "@/components/table/dawah-table";
 import IlmTable from "@/components/table/ilm-table";
 import JummahTable from "@/components/table/jumma-table";
@@ -15,6 +16,7 @@ import SadaqahTable from "@/components/table/sadaqah-table";
 import SalahTable from "@/components/table/salah-table";
 import SiyamTable from "@/components/table/siyam-table";
 import SleepingTable from "@/components/table/sleeping-table";
+import Image from "next/image";
 
 const TrackingHistory = () => {
   const [isGenerating, setIsGenerating] = useState(false);
@@ -48,26 +50,38 @@ const TrackingHistory = () => {
     setIsGenerating(true);
 
     const input = document.getElementById("pdf-report");
-    input.style.display = "block";
+    input.style.display = "block"; // পিডিএফ তৈরি করার জন্য এলিমেন্ট দেখানো
 
-    // Adjust the scale for mobile devices (higher scale for better resolution)
-    const scale = window.innerWidth <= 768 ? 3 : 2; // Increase scale for mobile devices
+    const scale = window.innerWidth <= 768 ? 3 : 2;
 
-    // Use html2canvas to render the content to canvas
     html2canvas(input, { scale }).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
 
-      const imgWidth = 210; // A4 width in mm
+      const imgWidth = 210; // A4 পেজের প্রস্থ (মিলিমিটারে)
+      const pageHeight = 297; // A4 পেজের উচ্চতা (মিলিমিটারে)
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-      pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
-      pdf.save("tracking-history.pdf");
+      let heightLeft = imgHeight;
+      let position = 0;
 
+      // প্রথম পৃষ্ঠার ছবি যোগ করা
+      pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+
+      // যদি অতিরিক্ত কন্টেন্ট থাকে, নতুন পৃষ্ঠা তৈরি করা
+      while (heightLeft > 0) {
+        position -= pageHeight; // পরবর্তী পৃষ্ঠার জন্য অবস্থান আপডেট
+        pdf.addPage();
+        pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+      }
+
+      pdf.save("tracking-history.pdf");
       setIsGenerating(false);
       toast.success("📄 PDF ডাউনলোড হয়েছে!");
 
-      input.style.display = "none";
+      input.style.display = "none"; // পুনরায় হাইড করা
     });
   };
 
@@ -102,14 +116,24 @@ const TrackingHistory = () => {
       </div>
       <Toaster />
       {/* PDF-এর জন্য আলাদা ডিজাইন, ডিফল্টভাবে Hidden */}
-      <div
-        id="pdf-report"
-        className="hidden px-16 py-10 mx-auto bg-white text-black"
-      >
-        <div className="mb-8">
-          <h1 className="text-center text-3xl font-extrabold text-gray-900 mb-6 tracking-wide">
-            📊 মাসিক মুহাসাবা রিপোর্ট
-          </h1>
+      <div id="pdf-report" className="hidden p-10 mx-auto bg-white text-black">
+        <div className="mb-4">
+          <div className="flex items-center justify-between align-middle">
+            <img
+              src="/muhasabah_icon.png"
+              alt="Muhasabah icon"
+              className="w-16 h-16"
+            />
+            <h1 className="text-center text-2xl font-extrabold text-gray-900 mb-6 tracking-wide">
+              মাসিক মুহাসাবা রিপোর্ট
+            </h1>
+            <img
+              src="/MuslimBangla.png"
+              alt="Muslim Bangla icon"
+              className="w-16 h-16"
+            />
+          </div>
+
           <div className="flex flex-col md:flex-row justify-between text-lg text-gray-800 border-b-2 pb-4 font-semibold">
             <h3 className="text-center md:text-left">
               👤 নাম: রাশেদ আব্দুল্লাহ
