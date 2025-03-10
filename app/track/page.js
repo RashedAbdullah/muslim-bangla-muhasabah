@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useState } from "react";
@@ -5,8 +6,8 @@ import { FaCopy, FaShareAlt, FaFilePdf } from "react-icons/fa";
 import { toast, Toaster } from "react-hot-toast";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import muhasabahIcon from "@/public/muhasabah_icon.png";
-import muslimBanglaIcon from "@/public/MuslimBangla.png";
+import { BiUser } from "react-icons/bi";
+import { HiCalendarDateRange } from "react-icons/hi2";
 import DawahTable from "@/components/table/dawah-table";
 import IlmTable from "@/components/table/ilm-table";
 import JummahTable from "@/components/table/jumma-table";
@@ -94,10 +95,14 @@ const TrackingHistory = () => {
             মাসিক মুহাসাবা রিপোর্ট
           </h1>
           <div className="flex flex-col md:flex-row justify-between text-lg text-gray-800 border-b-2 pb-4 font-semibold">
-            <h3 className="text-center md:text-left">
-              👤 নাম: রাশেদ আব্দুল্লাহ
-            </h3>
-            <p className="text-center md:text-right">📅 মাস: মার্চ</p>
+            <div className="flex justify-center items-center gap-2">
+              <BiUser />
+              <h3 className="text-center md:text-left">রাশেদ আব্দুল্লাহ</h3>
+            </div>
+            <div className="flex justify-center items-center gap-2">
+              <HiCalendarDateRange />
+              <p className="text-center md:text-right">মার্চ ২০২৫</p>
+            </div>
           </div>
         </div>
 
@@ -118,11 +123,11 @@ const TrackingHistory = () => {
       {/* PDF-এর জন্য আলাদা ডিজাইন, ডিফল্টভাবে Hidden */}
       <div id="pdf-report" className="hidden p-10 mx-auto bg-white text-black">
         <div className="mb-4">
-          <div className="flex items-center justify-between align-middle">
+          <div className="flex items-center justify-center gap-4 align-middle">
             <img
               src="/muhasabah_icon.png"
               alt="Muhasabah icon"
-              className="w-16 h-16"
+              className="h-16"
             />
             <h1 className="text-center text-3xl font-bold text-gray-900 mb-6 tracking-wide">
               মাসিক মুহাসাবা রিপোর্ট
@@ -130,15 +135,17 @@ const TrackingHistory = () => {
             <img
               src="/MuslimBangla.png"
               alt="Muslim Bangla icon"
-              className="w-16 h-16"
+              className="h-14"
             />
           </div>
 
           <div className="flex flex-col md:flex-row justify-between text-lg text-gray-800 border-b-2 pb-4 font-semibold">
-            <h3 className="text-center md:text-left">
-              👤 নাম: রাশেদ আব্দুল্লাহ
-            </h3>
-            <p className="text-center md:text-right">📅 মাস: মার্চ</p>
+            <div className="flex justify-center items-center align-middle gap-2">
+              <h3 className="text-center md:text-left">রাশেদ আব্দুল্লাহ</h3>
+            </div>
+            <div className="flex justify-center items-center gap-2">
+              <p className="text-center md:text-right">মার্চ ২০২৫</p>
+            </div>
           </div>
         </div>
         <SalahTable />
