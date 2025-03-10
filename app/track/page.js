@@ -17,7 +17,6 @@ import SadaqahTable from "@/components/table/sadaqah-table";
 import SalahTable from "@/components/table/salah-table";
 import SiyamTable from "@/components/table/siyam-table";
 import SleepingTable from "@/components/table/sleeping-table";
-import Image from "next/image";
 
 const TrackingHistory = () => {
   const [isGenerating, setIsGenerating] = useState(false);
@@ -57,7 +56,7 @@ const TrackingHistory = () => {
       return;
     }
 
-    input.style.display = "block"; // পিডিএফ তৈরি করার জন্য এলিমেন্ট দেখানো
+    input.style.display = "block";
 
     const scale = window.innerWidth <= 768 ? 3 : 2;
 

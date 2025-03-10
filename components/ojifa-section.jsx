@@ -1,5 +1,3 @@
-import { MdArrowOutward } from "react-icons/md";
-import React from "react";
 import { FaLink } from "react-icons/fa";
 
 const OjifaSection = () => {
@@ -13,7 +11,7 @@ const OjifaSection = () => {
             <a
               href="https://muslimbangla.com/quran"
               target="_blank"
-              className="flex  justify-center items-center gap-1 underline"
+              className="flex justify-center items-center gap-1 underline"
             >
               <FaLink color="green" />
             </a>
@@ -23,7 +21,7 @@ const OjifaSection = () => {
             className="rounded-md border-gray-300 focus:ring-2 focus:ring-green-600"
           />
         </div>
-        <div className="flex justify-between items-center ">
+        <div className="flex justify-between items-center">
           <p className="text-lg text-gray-700">আয়াত সংখ্যা</p>
           <input
             type="number"
@@ -49,7 +47,6 @@ const OjifaSection = () => {
         </div>
         <div className="flex justify-between items-center ">
           <p className="text-lg text-gray-700">ফজরের আমল </p>
-
           <input
             type="checkbox"
             className="rounded-md border-gray-300 focus:ring-2 focus:ring-green-600"
