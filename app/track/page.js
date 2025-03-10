@@ -88,7 +88,7 @@ const TrackingHistory = () => {
       setIsGenerating(false);
       toast.success("📄 PDF ডাউনলোড হয়েছে!");
 
-      input.style.display = "none"; // পুনরায় হাইড করা
+      input.style.display = "none";
     });
   };
 
